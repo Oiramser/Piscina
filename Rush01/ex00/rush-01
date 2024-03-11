@@ -1,0 +1,58 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    rush-01                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: marmarti <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/17 12:26:20 by marmarti          #+#    #+#              #
+#    Updated: 2024/02/17 12:57:40 by marmarti         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void rush-01(int **tabla, int columnas)
+{
+    
+    tabla = (int **)malloc(filas * sizeof(int *));
+
+    // Asigna memoria para cada fila individualmente
+    for (int i = 0; i < filas; i++) {
+        tabla[i] = (int *)malloc(columnas * sizeof(int));
+    }
+
+    // Inicializa y muestra la tabla
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            tabla[i][j] = i + j;
+           printf("%d\t", tabla[i][j]);
+        }
+        printf("\n");
+    }
+
+    //Libera la memoria asignada para cada fila
+    for (int i = 0; i < filas; i++) {
+       free(tabla[i]);
+    }
+
+    // Libera la memoria asignada para el array de punteros a filas
+    free(tabla);
+
+}
+}
+
+
+
+
+int main() {
+    int **tabla;
+    int filas = 4;
+    int columnas = 4;
+    int i, j;
+    
+    ejemplo(tabla, filas, columnas);
+    
+    return 0;
+}
